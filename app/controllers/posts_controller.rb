@@ -13,12 +13,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(title: "...", body: "...")
+    @post = Post.new(post_params)
     if @post.save
       redirect_to @post
     else 
       redner :new
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -32,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   private
-    def article_params
+    def post_params
       params.require(:post).permit(:title, :body)
     end
     
