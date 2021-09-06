@@ -9,3 +9,15 @@
   <li><%= link_to "Edit", edit_post_path(@post) %></li>
   <li><%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }%></li>
 </ul>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [@post, @post.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %>
+    <%= form.text_field :commenter %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
