@@ -10,6 +10,19 @@
   <li><%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }%></li>
 </ul>
 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+	<p>
+		<strong>Commenter:</strong>
+		<%= comment.commenter %>
+		<strong>Email:</strong
+		<%= comment.email %>
+	</p>
+	<p>
+		<%= comment.body %>
+	</p>
+<% end  %>
+
 <h2>Add a comment:</h2>
 <%= form_with model: [@post, @post.comments.build ] do |form| %>
   <p>
@@ -21,3 +34,4 @@
     <%= form.submit %>
   </p>
 <% end %>
+
